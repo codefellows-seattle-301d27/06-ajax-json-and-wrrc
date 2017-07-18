@@ -60,9 +60,10 @@ Article.fetchAll = function() {
     // then load all the data into Article.all with the .loadAll function above,
     // and then render the index page.
     // Est time: 15 mins | Done in: 20 mins
-    $.get('data/hackerIpsum.json', function(data) {
-      localStorage.rawData = JSON.stringify(data);
-      Article.fetchAll();
-    })
+    $.getJSON('data/hackerIpsum.json').then(
+      function(data) {
+        localStorage.rawData = JSON.stringify(data);
+        Article.fetchAll();},
+      function(){console.error('File not found');})
   }
 }
