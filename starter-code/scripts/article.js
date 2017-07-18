@@ -58,8 +58,14 @@ Article.fetchAll = function() {
     // cache it in localStorage so we can skip the server call next time,
     // then load all the data into Article.all with the .loadAll function above,
     // and then render the index page.
-    $.getJSON('data/hackerIpsum.json').then(function (data) {
-      localStorage.set()
+    // $.getJSON("data/hackerIpsum.json").then(function (data) {
+    //   localStorage.set('data', 'hackerIpsum.json');
+    //   console.log(data);
+    //
+    //   data = $.parseJSON(data)
+    $.getJSON('data/hackerIpsum.json', function(data) {
+      localStorage.setItem('data',JSON.stringify(data));
+      Article.loadAll(JSON.parse(data));
       console.log(data);
     })
   }
