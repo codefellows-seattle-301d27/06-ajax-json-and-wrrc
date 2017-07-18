@@ -47,10 +47,12 @@ Article.loadAll = function(rawData) {
 // and process it, then hand off control to the View.
 Article.fetchAll = function() {
   if (localStorage.rawData) {
+    var jsonData = localStorage.rawData;
     // When rawData is already in localStorage,
     // we can load it with the .loadAll function above,
     // and then render the index page (using the proper method on the articleView object).
-    Article.loadAll(); //TODO: What do we pass in to loadAll()?
+    Article.loadAll(jsonData); //DONE: What do we pass in to loadAll()?
+    // Completed in 2 minutes - Created variable for local storage
     //TODO: What method do we call to render the index page?
   } else {
     // TODO: When we don't already have the rawData,
