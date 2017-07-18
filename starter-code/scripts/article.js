@@ -34,7 +34,6 @@ Article.prototype.toHtml = function() {
 // and use it to instantiate all the articles. This code is moved from elsewhere, and
 // encapsulated in a simply-named function for clarity.
 Article.loadAll = function(rawData) {
-  console.log('in load all');
   rawData.sort(function(a,b) {
     return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
   });
@@ -49,7 +48,6 @@ Article.loadAll = function(rawData) {
 // and process it, then hand off control to the View.
 Article.fetchAll = function() {
   if (localStorage.rawData) {
-    console.log('in local storage');
     // When rawData is already in localStorage,
     // we can load it with the .loadAll function above,
     // and then render the index page (using the proper method on the articleView object).
