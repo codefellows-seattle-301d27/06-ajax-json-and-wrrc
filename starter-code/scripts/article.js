@@ -50,8 +50,11 @@ Article.fetchAll = function() {
     // When rawData is already in localStorage,
     // we can load it with the .loadAll function above,
     // and then render the index page (using the proper method on the articleView object).
-    Article.loadAll(); //TODO: What do we pass in to loadAll()?
-    //TODO: What method do we call to render the index page?
+    Article.loadAll(localStorage.rawData); //DONE: What do we pass in to loadAll()?
+    // est 5min act 5min
+    //DONE: What method do we call to render the index page?
+    // est: 5min act: 2min
+    Article.prototype.toHtml();
   } else {
     // TODO: When we don't already have the rawData,
     // we need to retrieve the JSON file from the server with AJAX (which jQuery method is best for this?),
