@@ -34,6 +34,7 @@ Article.prototype.toHtml = function() {
 // and use it to instantiate all the articles. This code is moved from elsewhere, and
 // encapsulated in a simply-named function for clarity.
 Article.loadAll = function(rawData) {
+  console.log('in load all');
   rawData.sort(function(a,b) {
     return (new Date(b.publishedOn)) - (new Date(a.publishedOn));
   });
@@ -41,6 +42,7 @@ Article.loadAll = function(rawData) {
   rawData.forEach(function(ele) {
     Article.all.push(new Article(ele));
   })
+  articleView.initIndexPage();
 }
 
 // This function will retrieve the data from either a local or remote source,
@@ -52,11 +54,36 @@ Article.fetchAll = function() {
     // and then render the index page (using the proper method on the articleView object).
     Article.loadAll(); //TODO: What do we pass in to loadAll()?
     //TODO: What method do we call to render the index page?
+    // done, took about 1 minute
+    articleView.initIndexPage();
   } else {
     // TODO: When we don't already have the rawData,
     // we need to retrieve the JSON file from the server with AJAX (which jQuery method is best for this?),
     // cache it in localStorage so we can skip the server call next time,
     // then load all the data into Article.all with the .loadAll function above,
     // and then render the index page.
+    const path = 'data/hackerIpsum.json';
+    $.getJSON(path).then(
+      function (data) {
+        Article.loadAll(data);
+        console.log(data);
+      },
+      function (error) {
+        console.log(error);
+      }
+    )
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+// ===
