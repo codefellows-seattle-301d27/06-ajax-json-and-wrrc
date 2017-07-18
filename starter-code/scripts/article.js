@@ -53,7 +53,9 @@ Article.fetchAll = function() {
     // and then render the index page (using the proper method on the articleView object).
     Article.loadAll(jsonData); //DONE: What do we pass in to loadAll()?
     // Completed in 2 minutes - Created variable for local storage
-    //TODO: What method do we call to render the index page?
+    //DONE: What method do we call to render the index page?
+    // Completed in 2 minutes - calls function from article.js
+    articleView.initIndexPage();
   } else {
     // TODO: When we don't already have the rawData,
     // we need to retrieve the JSON file from the server with AJAX (which jQuery method is best for this?),
