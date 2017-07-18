@@ -72,7 +72,7 @@ Article.fetchAll = function() {
       articleView.initIndexPage();
 
     }, function functionError(err) {
-      console.log(err);
+      console.err(err);
 
     });
   }
