@@ -41,7 +41,6 @@ Article.loadAll = function(rawData) {
   rawData.forEach(function(ele) {
     Article.all.push(new Article(ele));
   })
-  articleView.initIndexPage();
 }
 
 // This function will retrieve the data from either a local or remote source,
@@ -74,16 +73,3 @@ Article.fetchAll = function() {
     )
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-// ===
