@@ -50,7 +50,7 @@ Article.fetchAll = function() {
     // When rawData is already in localStorage,
     // we can load it with the .loadAll function above,
     // and then render the index page (using the proper method on the articleView object).
-    Article.loadAll(JSON.parse(localStorage.getItem('data'))); //TODO: What do we pass in to loadAll()?
+    Article.loadAll(JSON.parse(localStorage.getItem('rawData'))); //TODO: What do we pass in to loadAll()?
     // Done estimate: 5 min, actual 2 min
     //TODO: What method do we call to render the index page?
     // Done: estimate: 5min, actual: 2min
@@ -63,16 +63,16 @@ Article.fetchAll = function() {
     // and then render the index page.
     // Done estimate: 1 hour, actual: 1.5 hour
     var location = '../data/hackerIpsum.json';
-    $.get(location).then(function functionSuccess(data) {
+    $.get(location).then(function functionSuccess(rawData) {
 
-      var stringfiedData = JSON.stringify(data);
-      localStorage.setItem('data', stringfiedData);
+      var stringfiedData = JSON.stringify(rawData);
+      localStorage.setItem('rawData', stringfiedData);
       var parsedData = JSON.parse(stringfiedData)
       Article.loadAll(parsedData);
       articleView.initIndexPage();
 
     }, function functionError(err) {
-      console.err(err);
+      console.error(err);
 
     });
   }
